@@ -25,32 +25,13 @@ jobs:
       matrix:
         target:
           - arm-linux-gnueabihf
-          - aarch64-linux-gnu
-          - x86_64-linux-gnu
-          - riscv64-linux-gnu
         buildtype:
-          - debug
           - release
         include:
-          - target: 'x86_64-linux-gnu'
-            is-cross: false
-            debian-arch: 'amd64'
-            container: 'debian:bullseye'
-
-          - target: 'aarch64-linux-gnu'
-            is-cross: true
-            debian-arch: 'arm64'
-            container: 'debian:bullseye'
-
           - target: 'arm-linux-gnueabihf'
             is-cross: true
             debian-arch: 'armhf'
             container: 'debian:bullseye'
-
-          - target: 'riscv64-linux-gnu'
-            is-cross: true
-            debian-arch: 'riscv64'
-            container: 'debian:trixie'
 
     steps:
       - name: Add debian multiarch
